@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: TerrainMat
-  m_Shader: {fileID: 4800000, guid: 743e43064155e6d47a43b5460642218a, type: 3}
+  m_Shader: {fileID: 4800000, guid: a9741ee4173063547a54622c06caca82, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -22,8 +22,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _BumpSplat0:
+        m_Texture: {fileID: 2800000, guid: c1b89566ba34e8d4db0638a07a52373d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpSplat1:
+        m_Texture: {fileID: 2800000, guid: 7275056b207a90042aa7beb4b68395a6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpSplat2:
+        m_Texture: {fileID: 2800000, guid: 165101da37b1a0c47b5ab52e4dcf8cf1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpSplat3:
+        m_Texture: {fileID: 2800000, guid: beb031db6e6acfa43bd27b6a03abbe2f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Control:
-        m_Texture: {fileID: 2800000, guid: d45b22ede716b2b4d85bb28385dbe119, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -79,6 +95,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Gloss: 0.907
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -95,4 +112,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _LightCol: {r: 1, g: 1, b: 1, a: 1}
     - _Tiling3: {r: 1, g: 1, b: 0, a: 0}

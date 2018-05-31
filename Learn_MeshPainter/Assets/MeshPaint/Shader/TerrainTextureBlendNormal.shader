@@ -1,4 +1,4 @@
-﻿Shader "Custom/TerrainTextureBlendNormal" {
+﻿Shader "meshPainter/TerrainTextureBlendNormal" {
 	Properties {
 		_LightCol("Light Color", Color) = (1,1,1,1)
 		_Gloss("_Gloss" , Range(0,1)) = 0.8
@@ -41,6 +41,20 @@
 			half2 uv_Splat3 : TEXCOORD4;
 		};
 
+		inline half4 Blend(half depth1, half depth2, half depth3, half depth4, fixed4 control)
+		{
+			half4 blend;
+
+			blend.r = depth1 * control.r;
+			blend.g = depth2 * control.g;
+			blend.b = depth3 * control.b;
+			blend.a = depth4 * control.a;
+
+			half ma = max(blend.r, max(blend.g, max(blend.b, blend.a)));
+			blend = max(blend - ma + _Weight, 0) * control;
+			return blend / (blend.r + blend.g + blend.b + blend.a);
+		}
+
 		void surf(Input IN, inout SurfaceOutput o) {
 			fixed4 splat_control = tex2D(_Control, IN.uv_Control).rgba;
 			//纹理贴图
@@ -69,19 +83,7 @@
 			o.Normal = nor1 * blend.r + nor2 * blend.g + nor3 * blend.b + nor4 * blend.a;//法线混合
 		}
 
-		inline half4 Blend(half depth1, half depth2, half depth3, half depth4, fixed4 control)
-		{
-			half4 blend;
-
-			blend.r = depth1 * control.r;
-			blend.g = depth2 * control.g;
-			blend.b = depth3 * control.b;
-			blend.a = depth4 * control.a;
-
-			half ma = max(blend.r, max(blend.g, max(blend.b, blend.a)));
-			blend = max(blend - ma + _Weight, 0) * control;
-			return blend / (blend.r + blend.g + blend.b + blend.a);
-		}
+		
 
 	
 		inline half4  LightingBlendModel(SurfaceOutput s, half3 lightDir, half3 viewDir, half atten)

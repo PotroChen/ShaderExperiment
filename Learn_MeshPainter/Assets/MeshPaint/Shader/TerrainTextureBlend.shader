@@ -1,4 +1,4 @@
-﻿Shader "Custom/TerrainTextureBlend" {
+﻿Shader "meshPainter/TerrainTextureBlend" {
 	Properties { 
 		_Splat0("Layer 1(RGBA)", 2D) = "white" {}
 		_Splat1("Layer 2(RGBA)", 2D) = "white" {}
