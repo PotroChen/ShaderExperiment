@@ -169,11 +169,15 @@ public class meshPainterStyle : Editor
         AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);//导入资源
         //Control贴图的导入设置
         TextureImporter textureIm = AssetImporter.GetAtPath(path) as TextureImporter;
-        textureIm.textureFormat = TextureImporterFormat.ARGB32;
+        //TextureImporterSettings textureImSetting = new TextureImporterSettings();
+        //textureImSetting.textureFormat = TextureImporterFormat.ARGB32;
+
+        textureIm.textureCompression = TextureImporterCompression.Uncompressed;//.ARGB32;
         textureIm.isReadable = true;
         textureIm.anisoLevel = 9;
         textureIm.mipmapEnabled = false;
         textureIm.wrapMode = TextureWrapMode.Clamp;
+        //textureIm.SaveAndReimport();
         AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);//刷新资源
 
         setControlTex(path);//设置Controlt贴图
@@ -183,8 +187,15 @@ public class meshPainterStyle : Editor
     void setControlTex(string path)
     {
         Texture2D controlTex = (Texture2D)AssetDatabase.LoadAssetAtPath(path, typeof(Texture2D));
-        //controlTex. = TextureFormat.ARGB32;
+        //controlTex.format = TextureFormat.ARGB32;
         Selection.activeTransform.gameObject.GetComponent<MeshRenderer>().sharedMaterial.SetTexture("_Control", controlTex);
+    }
+
+    void setControlTex(Texture2D mTexture)
+    {
+        //Texture2D controlTex = (Texture2D)AssetDatabase.LoadAssetAtPath(path, typeof(Texture2D));
+        //controlTex.format = TextureFormat.ARGB32;
+        Selection.activeTransform.gameObject.GetComponent<MeshRenderer>().sharedMaterial.SetTexture("_Control", mTexture);
     }
 
     void Painter()
